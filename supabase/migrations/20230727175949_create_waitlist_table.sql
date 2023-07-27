@@ -9,12 +9,12 @@ create table public.waitlist (
 -- Usernames need to meet the following requirements:
 -- 1. Must be at least 1 character
 -- 2. Must be at most 40 characters
--- 3. Must contain only alphanumeric characters
+-- 3. Must contain only alphanumeric/underscore characters
 create or replace function public.is_valid_username(username varchar)
 returns boolean as
 $$
 begin
-  return username ~ '^[a-zA-Z0-9]{1,40}$';
+  return username ~ '^[a-zA-Z0-9_]{1,40}$';
 end;
 $$ language plpgsql;
 

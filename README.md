@@ -35,7 +35,7 @@ Usernames must meet the following requirements:
 
 - At least one character
 - Less than 40 characters
-- Only alphanumeric characters
+- Only alphanumeric/underscore characters
 
 Usernames are case sensitive, but must be case-sensitively unique. For example, if I have a username "MrBeast", the following usernames are invalid:
 
