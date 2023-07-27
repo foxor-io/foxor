@@ -28,3 +28,17 @@ Formatting is handled by [Prettier](https://prettier.io/). Run `npm run beautify
 ## Deployment
 
 The website is hosted by Vercel. Builds and deployments are automatically started any time a commit is merged into the `main` branch in Github.
+
+## Username requirements
+
+Usernames must meet the following requirements:
+
+- At least one character
+- Less than 40 characters
+- Only alphanumeric characters
+
+Usernames are case sensitive, but must be case-sensitively unique. For example, if I have a username "MrBeast", the following usernames are invalid:
+
+- "mrbeast"
+- "mrBeast"
+- "MRBEAST"
