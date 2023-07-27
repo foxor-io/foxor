@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# foxor.io
 
-## Getting Started
+Landing page and possible future web application for foxor.io
 
-First, run the development server:
+## Local development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Run `npm install` to install node dependencies
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[Docker](https://www.docker.com/) needs to be installed to run Supabase locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run `npx supabase start` to initialize the Supabase local development Docker container. This runs all Supabase services locally with seed data found in the `/supabase/seed.sql` file and migrations in the `/supabase/migrations/*` files.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The following environment variables are required to initialize the Supabase client in Next.js
 
-## Learn More
+| Name                            | Description                                                                                             |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | URL of the Supabase API gateway. In development mode this can be found by running `npx supabase status` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Anon key for the Supabase API. In development mode this can be found by running `npx supabase status`   |
 
-To learn more about Next.js, take a look at the following resources:
+In development mode, these can be added via command line or a `.env.local` file in the root of the directory. In production, these are set in the Vercel dashboard.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Reference [Supabase Local Development](https://supabase.com/docs/guides/cli/local-development) for more info.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Code Formatting
 
-## Deploy on Vercel
+Formatting is handled by [Prettier](https://prettier.io/). Run `npm run beautify` to format the entire project. Formatting on paste and save are enabled by default if you are using VS Code.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The website is hosted by Vercel. Builds and deployments are automatically started any time a commit is merged into the `main` branch in Github.
