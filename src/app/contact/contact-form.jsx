@@ -37,11 +37,13 @@ function ContactForm() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const { data: is_available, error } = await supabase.rpc('is_username_available', { new_username: handle });
+    const stripped_handle = handle.replace('@','');
+
+    const { data: is_available } = await supabase.rpc('is_username_available', { new_username: stripped_handle });
     if(is_available) {
-      const { error } = await supabase.from('waitlist').insert({ username: handle, email });
+      const { error } = await supabase.from('waitlist').insert({ username: stripped_handle, email });
       if(!error) {
-        alert('You have been added to the waitlist!');
+        alert('Thank you for your reservation!');
         setEmail('');
         setHandle('');
       }
@@ -72,10 +74,10 @@ function ContactForm() {
             required
           />
           <TextInput
-            label="@Handle"
+            label="Handle"
             name="handle"
             autoComplete="handle"
-            pattern="^[a-zA-Z0-9_]{1,40}$"
+            pattern="^@?[a-zA-Z0-9_]{1,40}$"
             value={handle}
             onChange={(e) => setHandle(e.target.value)}
             required
